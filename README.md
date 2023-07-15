@@ -22,7 +22,8 @@ To do so, ***you will refactor this application into a microservice architecture
 
 ### Architecture
 
-                  #### UdaConnect Architecture Diagram
+UdaConnect Architecture Diagram
+
     ![](docs/architecture-design.png)              
 
      ![UdaConnect Architecture Diagram](docs/architecture-design.png)
