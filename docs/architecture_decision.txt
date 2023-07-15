@@ -1,0 +1,14 @@
+Architecture Design Descision
+----------------------------------------------------------
+ In the UdaConnect project, the following message passing strategies were adopted:
+
+        1. REST APIs
+        2. gRPC
+        3. Message Queues (Kafka)
+
+The frontend client leverages REST APIs to enable integration with the various HTTP routes (person and connection microservices). REST was chosen because it is more straightforward that potentially avoid lengthy and unnecessary work and efficient interms of performance as well.
+Location service is separated into two microservices namely Location-consumer and Location-event-producer. In this regard, gRPC was chosen as the mode of message passing strategy for ingesting large volume of location data from the mobile devices.In this regard, gRPC can reduces the overall size of the payload and connection overhead and thereby improving  the performance of our solution. 
+In addition, mobile devices can integrate well with gRPC without an intermediary proxy to the backend service. Due to this, our solution can handle the large volume of location data that will sent from numerous mobile devices. 
+The location-event-producer service utilizes a message queue (Kafka) to handle the ingested location data.This will help to achieve improved performance, improved reliability and high throughput, and also enable decoupling of our storage (read and write can be done simultaneously). 
+Combining message queue with gRPC for the ingestion of location data from the mobile device will provide better performance. The decision to use Kafka over other messaging queues is to ensure that we utilize a durable distributed queue that can handle large volumes of data.
+Postgres Database : Stores the data 
