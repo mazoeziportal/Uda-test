@@ -6,6 +6,7 @@ message LocationMessage {
   int32 longitude = 3;
 }
 
+
 service locationService {
   rpc Create(LocationMessage) returns (LocationMessage);
 }
